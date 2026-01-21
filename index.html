@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SoCal-AIRE | Southern California AI for Research & Education</title>
-    
+
     <link rel="icon" href="images/logofinal.png" type="image/png">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         /* --- THEME VARIABLES --- */
         :root {
@@ -22,11 +25,11 @@
 
         /* 1. DARK THEME (Default) */
         [data-theme="dark"] {
-            --bg-body: #020617; 
+            --bg-body: #020617;
             --bg-nav: rgba(2, 6, 23, 0.9);
             --bg-card: rgba(30, 41, 59, 0.4);
             --bg-card-hover: rgba(30, 41, 59, 0.8);
-            --bg-card-front: linear-gradient(145deg, rgba(30,41,59,0.6) 0%, rgba(15,23,42,0.8) 100%);
+            --bg-card-front: linear-gradient(145deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             --section-line: var(--brand-cyan);
@@ -38,7 +41,7 @@
 
         /* 2. BLUE THEME */
         [data-theme="blue"] {
-            --bg-body: #003B5C; 
+            --bg-body: #003B5C;
             --bg-nav: rgba(0, 59, 92, 0.9);
             --bg-card: rgba(255, 255, 255, 0.1);
             --bg-card-hover: rgba(255, 255, 255, 0.2);
@@ -54,12 +57,12 @@
 
         /* 3. LIGHT THEME */
         [data-theme="light"] {
-            --bg-body: #F8FAFC; 
+            --bg-body: #F8FAFC;
             --bg-nav: rgba(255, 255, 255, 0.95);
             --bg-card: #ffffff;
             --bg-card-hover: #ffffff;
             --bg-card-front: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
-            --text-primary: #0F172A; 
+            --text-primary: #0F172A;
             --text-secondary: #475569;
             --section-line: var(--brand-orange);
             --hero-glow: radial-gradient(circle at 50% 50%, rgba(0, 181, 226, 0.08), transparent 70%);
@@ -69,7 +72,11 @@
         }
 
         /* --- GLOBAL STYLES --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -80,46 +87,198 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; letter-spacing: -0.02em; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        html { scroll-behavior: smooth; }
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 1rem 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000; background: var(--bg-nav); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(128,128,128,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: var(--bg-nav);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
             transition: background var(--transition-speed);
         }
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.4rem; color: var(--text-primary); }
-        .brand img { height: 45px; width: auto; }
-        .theme-switch { display: flex; gap: 5px; background: rgba(128,128,128,0.1); padding: 5px; border-radius: 50px; }
-        .theme-btn { border: none; background: none; cursor: pointer; padding: 8px; border-radius: 50%; color: var(--text-secondary); transition: 0.3s; font-size: 1rem; }
-        .theme-btn:hover, .theme-btn.active { background: var(--text-primary); color: var(--bg-body); }
-        .cta-btn { padding: 10px 24px; border: 1px solid rgba(128,128,128,0.3); border-radius: 50px; font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
-        .cta-btn:hover { background: var(--text-primary); color: var(--bg-body); }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+
+        .brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        .theme-switch {
+            display: flex;
+            gap: 5px;
+            background: rgba(128, 128, 128, 0.1);
+            padding: 5px;
+            border-radius: 50px;
+        }
+
+        .theme-btn {
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            color: var(--text-secondary);
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .theme-btn:hover,
+        .theme-btn.active {
+            background: var(--text-primary);
+            color: var(--bg-body);
+        }
+
+        .cta-btn {
+            padding: 10px 24px;
+            border: 1px solid rgba(128, 128, 128, 0.3);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .cta-btn:hover {
+            background: var(--text-primary);
+            color: var(--bg-body);
+        }
 
         /* --- HERO --- */
         .hero {
-            min-height: 85vh; display: flex; align-items: center; justify-content: center;
-            text-align: center; padding: 8rem 5% 4rem; background: var(--hero-glow); position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            background: var(--hero-glow);
+            position: relative;
         }
-        .hero-logo { width: 180px; margin-bottom: 2rem; animation: float 6s ease-in-out infinite; filter: drop-shadow(0 0 20px rgba(0, 181, 226, 0.4)); }
-        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
-        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 2.5rem; font-weight: 800; }
-        .gradient-text { background: var(--gradient-sunset); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .primary-btn { background: var(--gradient-sunset); color: white; padding: 16px 45px; border-radius: 50px; font-weight: 600; box-shadow: 0 10px 30px rgba(255, 127, 50, 0.3); display: inline-block; transition: transform 0.3s; }
-        .primary-btn:hover { transform: translateY(-3px); }
+
+        .hero-logo {
+            width: 180px;
+            margin-bottom: 2rem;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 181, 226, 0.4));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-15px)
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            font-weight: 800;
+        }
+
+        .gradient-text {
+            background: var(--gradient-sunset);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .primary-btn {
+            background: var(--gradient-sunset);
+            color: white;
+            padding: 16px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(255, 127, 50, 0.3);
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+        }
 
         /* --- SECTIONS --- */
-        section { padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; position: relative; display: inline-block; width: 100%; color: var(--text-primary); }
-        .section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--section-line); margin: 15px auto 3rem; border-radius: 2px; }
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-        .about-section { text-align: center; max-width: 1200px; margin: 0 auto; } 
-        .about-text { font-size: 1.35rem; color: var(--text-secondary); line-height: 1.8; font-weight: 300; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+            color: var(--text-primary);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--section-line);
+            margin: 15px auto 3rem;
+            border-radius: 2px;
+        }
+
+        /* INCREASED WIDTH FOR TEXT SECTIONS (Fixing "Wall Text") */
+        .about-section {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            font-size: 1.35rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-weight: 300;
+        }
 
         /* --- FLIP CARDS GRID --- */
         .grid-flip-container {
@@ -136,135 +295,535 @@
             justify-content: center;
             gap: 2.5rem;
         }
-        
+
         .principles-container .flip-card {
-            flex: 1 1 320px; 
+            flex: 1 1 320px;
             max-width: 500px;
+            /* Increased max-width to let text breathe */
         }
 
-        .flip-card { background-color: transparent; height: 340px; cursor: pointer; width: 100%; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute; width: 100%; height: 100%;
-            -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 16px; padding: 2.5rem;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .flip-card-front { background: var(--bg-card-front); border: 1px solid rgba(128,128,128,0.1); }
-        [data-theme="light"] .flip-card-front { box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
-        .flip-icon { font-size: 3.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--brand-cyan), var(--brand-orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .flip-card-front h3, .flip-card-front h4 { font-size: 1.4rem; color: var(--text-primary); }
-        .hint { margin-top: auto; font-size: 0.8rem; color: var(--brand-cyan); opacity: 0.8; display: flex; align-items: center; gap: 5px; }
-        .flip-card-back { background: var(--gradient-sunset); color: white; transform: rotateY(180deg); padding: 2rem; }
-        .flip-card-back h3, .flip-card-back h4 { color: white; margin-bottom: 1rem; font-size: 1.3rem; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 0.5rem; }
-        .flip-card-back p { font-size: 1rem; line-height: 1.5; color: rgba(255,255,255,0.95); }
-
-        /* --- AUDIENCE & ORGANIZATION --- */
-        .audience-intro { text-align: center; max-width: 1000px; margin: 0 auto 4rem; }
-        .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .persona-card {
-            background: var(--bg-card); border: 1px solid rgba(128,128,128,0.1); padding: 2.5rem;
-            border-radius: 12px; text-align: center; transition: all 0.3s ease;
-        }
-        [data-theme="light"] .persona-card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .persona-card:hover { transform: translateY(-5px); border-color: var(--brand-cyan); }
-        .icon-circle { width: 70px; height: 70px; background: rgba(0, 181, 226, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--brand-cyan); font-size: 1.8rem; }
-        .persona-card p { color: var(--text-primary); font-size: 1.1rem; font-weight: 500; }
-        .welcome-badge { display: inline-block; margin-top: 3rem; background: rgba(255, 127, 50, 0.1); color: var(--brand-orange); padding: 10px 24px; border-radius: 50px; font-weight: 600; border: 1px solid rgba(255, 127, 50, 0.3); text-align: center; width: 100%; }
-
-        .org-section-container { max-width: 1000px; margin: 0 auto; }
-        .org-card { background: var(--bg-card); border: 1px solid rgba(128,128,128,0.1); padding: 3rem; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); }
-        [data-theme="light"] .org-card { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .org-card p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .org-icon { font-size: 3rem; margin-bottom: 1.5rem; color: var(--brand-cyan); }
-
-        /* --- NEW: EXTRA WIDE PARTNERS SECTION --- */
-        .partners-section {
-            max-width: 100% !important; /* Forces full width */
-            padding-left: 2%;
-            padding-right: 2%;
-        }
-
-        /* --- PARTNERS SECTION (One Row, LARGE) --- */
-        .logo-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-            align-items: center;
+        .flip-card {
+            background-color: transparent;
+            height: 340px;
+            cursor: pointer;
             width: 100%;
         }
-        
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-card-front {
+            background: var(--bg-card-front);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        [data-theme="light"] .flip-card-front {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .flip-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--brand-cyan), var(--brand-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .flip-card-front h3,
+        .flip-card-front h4 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+        }
+
+        .hint {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--brand-cyan);
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .flip-card-back {
+            background: var(--gradient-sunset);
+            color: white;
+            transform: rotateY(180deg);
+            padding: 2rem;
+        }
+
+        .flip-card-back h3,
+        .flip-card-back h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .flip-card-back p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* --- AUDIENCE & ORGANIZATION --- */
+        .audience-intro {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto 4rem;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .persona-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .persona-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-cyan);
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 181, 226, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--brand-cyan);
+            font-size: 1.8rem;
+        }
+
+        .persona-card p {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .welcome-badge {
+            display: inline-block;
+            margin-top: 3rem;
+            background: rgba(255, 127, 50, 0.1);
+            color: var(--brand-orange);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid rgba(255, 127, 50, 0.3);
+            text-align: center;
+            width: 100%;
+        }
+
+        .org-section-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .org-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        [data-theme="light"] .org-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .org-card p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .org-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--brand-cyan);
+        }
+
+        /* --- PARTNERS SECTION (Redesigned: One Row) --- */
+        .logo-grid {
+            display: grid;
+            /* Force 4 equal columns on standard screens */
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        /* Make cards adapt to the row */
         .logo-card {
             background: var(--logo-bg);
-            border: 1px solid rgba(128,128,128,0.1);
+            border: 1px solid rgba(128, 128, 128, 0.1);
             padding: 1rem;
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Increased Height for "Large" look */
-            height: 120px; 
+            height: 160px;
+            /* Slightly shorter height for horizontal look */
             transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
             backdrop-filter: blur(5px);
             position: relative;
             overflow: hidden;
         }
-        
-        [data-theme="light"] .logo-card { background: white; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .logo-card:hover { border-color: var(--brand-cyan); box-shadow: 0 0 25px rgba(0, 181, 226, 0.15); transform: translateY(-8px) scale(1.02); background: var(--logo-bg-hover); }
+
+        [data-theme="light"] .logo-card {
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo-card:hover {
+            border-color: var(--brand-cyan);
+            box-shadow: 0 0 25px rgba(0, 181, 226, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            background: var(--logo-bg-hover);
+        }
 
         .partner-logo {
-            width: auto; height: auto;
-            max-width: 90%; max-height: 90%;
+            width: auto;
+            height: auto;
+            max-width: 85%;
+            max-height: 80%;
             object-fit: contain;
             transition: 0.3s;
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.1));
-            transform: scale(1.1); /* Zoomed in more */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.1));
+            transform: scale(1.0);
         }
-        .logo-card:hover .partner-logo { transform: scale(1.25); filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+
+        .logo-card:hover .partner-logo {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
 
         /* --- FOOTER --- */
-        footer { padding: 6rem 5% 3rem; background: var(--footer-bg); transition: background var(--transition-speed); display: flex; flex-direction: column; align-items: center; border-top: 1px solid rgba(128,128,128,0.1); }
-        .footer-card { background: var(--bg-card); border: 1px solid rgba(128,128,128,0.1); padding: 3rem; border-radius: 20px; text-align: center; max-width: 600px; width: 100%; backdrop-filter: blur(10px); margin-bottom: 3rem; }
-        [data-theme="light"] .footer-card { background: white; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
-        .footer-card h3 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--text-primary); }
-        .footer-card p { color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem; }
-        .email-btn { display: inline-flex; align-items: center; gap: 10px; font-size: 1.3rem; font-weight: 700; color: var(--brand-cyan); border: 2px solid rgba(0, 181, 226, 0.3); padding: 15px 30px; border-radius: 50px; transition: 0.3s; }
-        .email-btn:hover { background: var(--brand-cyan); color: white; box-shadow: 0 0 20px rgba(0, 181, 226, 0.4); }
-        .copyright { font-size: 0.9rem; color: var(--text-secondary); opacity: 0.5; }
-
-        .fade-in-up { opacity: 0; transform: translateY(30px); transition: 0.8s; }
-        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-        
-        @media (max-width: 1024px) {
-            .logo-grid { grid-template-columns: repeat(2, 1fr); }
-            .logo-card { height: 200px; }
+        footer {
+            padding: 6rem 5% 3rem;
+            background: var(--footer-bg);
+            transition: background var(--transition-speed);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid rgba(128, 128, 128, 0.1);
         }
+
+        .footer-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            margin-bottom: 3rem;
+        }
+
+        [data-theme="light"] .footer-card {
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .footer-card h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brand-cyan);
+            border: 2px solid rgba(0, 181, 226, 0.3);
+            padding: 15px 30px;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .email-btn:hover {
+            background: var(--brand-cyan);
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 181, 226, 0.4);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Media Queries for Partners Responsive Breakpoint */
+        @media (max-width: 1024px) {
+            .logo-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2x2 on tablets */
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-logo { width: 120px; }
-            .hero { padding-top: 8rem; }
-            .logo-grid { grid-template-columns: 1fr; }
+            .hero-logo {
+                width: 120px;
+            }
+
+            .hero {
+                padding-top: 8rem;
+            }
+
+            .logo-grid {
+                grid-template-columns: 1fr;
+                /* Stack on mobile */
+            }
+        }
+
+        /* --- EVENTS SECTION STYLES --- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid rgba(128, 128, 128, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--brand-cyan);
+            box-shadow: 0 10px 30px rgba(0, 181, 226, 0.1);
+        }
+
+        .event-date {
+            background: var(--gradient-sunset);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            min-width: 160px;
+            text-align: center;
+        }
+
+        .event-date .day {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .event-date .month {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .event-content {
+            padding: 30px;
+            flex-grow: 1;
+        }
+
+        .event-tag {
+            display: inline-block;
+            background: rgba(0, 181, 226, 0.1);
+            color: var(--brand-cyan);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .event-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin: 12px 0 20px;
+        }
+
+        .event-details span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-details i {
+            color: var(--brand-cyan);
+        }
+
+        .event-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid var(--brand-cyan);
+            color: var(--brand-cyan);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .event-btn:hover {
+            background: var(--brand-cyan);
+            color: white;
+        }
+
+        /* Past Events Styling */
+        .past-events-section {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        .past-event-item {
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            align-items: center;
+            padding: 1.25rem 2rem;
+            background: rgba(128, 128, 128, 0.05);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: 0.3s;
+        }
+
+        .past-event-item:hover {
+            background: rgba(128, 128, 128, 0.1);
+            transform: translateX(5px);
+        }
+
+        .past-date {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .past-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .past-link {
+            color: var(--brand-cyan);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .event-card {
+                flex-direction: column;
+            }
+
+            .event-date {
+                flex-direction: row;
+                min-width: 100%;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .past-event-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav>
         <a href="#" class="brand">
-            <img src="images/logofinal.png" alt="SoCal-AIRE Logo"> 
+            <img src="images/logofinal.png" alt="SoCal-AIRE Logo">
             SoCal-AIRE
         </a>
-        
+
         <div class="nav-right">
             <div class="theme-switch">
-                <button class="theme-btn active" onclick="setTheme('dark')" title="Dark Mode"><i class="fas fa-moon"></i></button>
-                <button class="theme-btn" onclick="setTheme('blue')" title="Blue Mode"><i class="fas fa-water"></i></button>
-                <button class="theme-btn" onclick="setTheme('light')" title="Light Mode"><i class="fas fa-sun"></i></button>
+                <button class="theme-btn active" onclick="setTheme('dark')" title="Dark Mode"><i
+                        class="fas fa-moon"></i></button>
+                <button class="theme-btn" onclick="setTheme('blue')" title="Blue Mode"><i
+                        class="fas fa-water"></i></button>
+                <button class="theme-btn" onclick="setTheme('light')" title="Light Mode"><i
+                        class="fas fa-sun"></i></button>
             </div>
             <a href="mailto:contact@socal-aire.org" class="cta-btn">Contact</a>
         </div>
@@ -273,12 +832,12 @@
     <header class="hero">
         <div class="hero-content fade-in-up">
             <img src="images/logofinal.png" alt="SoCal-AIRE Logo" class="hero-logo">
-            
+
             <h1>
-                Southern California AI<br>
-                <span class="gradient-text">for Research & Education</span>
+                Southern California <br>
+                <span class="gradient-text">AI for Research & Education</span>
             </h1>
-            
+
             <div class="hero-actions">
                 <a href="mailto:contact@socal-aire.org" class="primary-btn">Join the Community</a>
             </div>
@@ -289,7 +848,10 @@
         <h2 class="section-title fade-in-up">Who We Are</h2>
         <div class="fade-in-up">
             <p class="about-text">
-                The SoCal AI for Research & Education Community unites the region’s academic and research talent to advance the effective, responsible, and scalable integration of artificial intelligence. We serve as a dynamic regional forum for knowledge exchange and capacity building, bridging local innovations with national NSF-supported resources such as ACCESS, the NAIRR, and other major initiatives.
+                The SoCal AI for Research & Education Community unites the region’s academic and research talent to
+                advance the effective, responsible, and scalable integration of artificial intelligence. We serve as a
+                dynamic regional forum for knowledge exchange and capacity building, bridging local innovations with
+                national NSF-supported resources such as ACCESS, the NAIRR, and other major initiatives.
             </p>
         </div>
     </section>
@@ -306,7 +868,8 @@
                     </div>
                     <div class="flip-card-back">
                         <h3>Applied Innovation</h3>
-                        <p>Showcasing transformative AI use cases across diverse disciplines to demonstrate real-world impact in science and humanities.</p>
+                        <p>Showcasing transformative AI use cases across diverse disciplines to demonstrate real-world
+                            impact in science and humanities.</p>
                     </div>
                 </div>
             </div>
@@ -319,7 +882,8 @@
                     </div>
                     <div class="flip-card-back">
                         <h3>Seamless Integration</h3>
-                        <p>Designing workflows that embed AI into established research pipelines and educational curricula.</p>
+                        <p>Designing workflows that embed AI into established research pipelines and educational
+                            curricula.</p>
                     </div>
                 </div>
             </div>
@@ -332,7 +896,8 @@
                     </div>
                     <div class="flip-card-back">
                         <h3>Collaborative Exchange</h3>
-                        <p>Fostering peer-to-peer growth through expert talks, poster sessions, and community working groups.</p>
+                        <p>Fostering peer-to-peer growth through expert talks, poster sessions, and community working
+                            groups.</p>
                     </div>
                 </div>
             </div>
@@ -345,7 +910,8 @@
                     </div>
                     <div class="flip-card-back">
                         <h3>Ethical Standards</h3>
-                        <p>Championing transparency, reproducibility, and responsibility in the development and deployment of AI.</p>
+                        <p>Championing transparency, reproducibility, and responsibility in the development and
+                            deployment of AI.</p>
                     </div>
                 </div>
             </div>
@@ -358,7 +924,8 @@
                     </div>
                     <div class="flip-card-back">
                         <h3>Infrastructure</h3>
-                        <p>Demystifying access to advanced computing and data resources like ACCESS and regional clusters.</p>
+                        <p>Demystifying access to advanced computing and data resources like ACCESS and regional
+                            clusters.</p>
                     </div>
                 </div>
             </div>
@@ -371,7 +938,8 @@
                     </div>
                     <div class="flip-card-back">
                         <h3>Member Driven</h3>
-                        <p>Activities evolve through member-led initiatives, convened by the ACCESS Support Team at USC/ISI.</p>
+                        <p>Activities evolve through member-led initiatives, convened by the ACCESS Support Team at
+                            USC/ISI.</p>
                     </div>
                 </div>
             </div>
@@ -382,7 +950,7 @@
         <div class="audience-intro fade-in-up">
             <h2 class="section-title">Who It’s For</h2>
             <p style="color: var(--text-secondary); font-size: 1.1rem;">
-                A multidisciplinary coalition open to all experience levels across the  Southern California Region and beyond.
+                A multidisciplinary coalition open to all experience levels.
             </p>
         </div>
         <div class="audience-grid">
@@ -412,8 +980,9 @@
 
     <section>
         <h2 class="section-title fade-in-up">Guiding Principles</h2>
-        
+
         <div class="principles-container">
+
             <div class="flip-card fade-in-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -427,6 +996,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="flip-card fade-in-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -440,6 +1010,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="flip-card fade-in-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -453,6 +1024,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="flip-card fade-in-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -466,6 +1038,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="flip-card fade-in-up">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
@@ -479,6 +1052,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -486,13 +1060,63 @@
         <h2 class="section-title fade-in-up">Organization</h2>
         <div class="org-card fade-in-up">
             <i class="fas fa-building-columns org-icon"></i>
-            <p>The community is convened by the <strong>ACCESS Support Team at USC’s Information Sciences Institute (USC/ISI)</strong>, with guidance and participation from regional partners.</p>
-            <p style="font-size: 1.1rem; opacity: 0.9;">Activities are community-driven and evolve based on member interests and needs.</p>
+            <p>The community is convened by the <strong>ACCESS Support Team at USC’s Information Sciences Institute
+                    (USC/ISI)</strong>, with guidance and participation from regional partners.</p>
+            <p style="font-size: 1.1rem; opacity: 0.9;">Activities are community-driven and evolve based on member
+                interests and needs.</p>
         </div>
     </section>
 
+    <section id="events">
+    <h2 class="section-title fade-in-up">Upcoming Events</h2>
+    
+    <div class="events-grid">
+        <div class="event-card fade-in-up">
+            <div class="event-date">
+                <span class="day">30</span>
+                <span class="month">JAN</span>
+            </div>
+            <div class="event-content">
+                <div class="event-tag">Symposium</div>
+                <h3>Inaugural AI in Science Symposium</h3>
+                <div class="event-details">
+                    <span><i class="fas fa-clock"></i> 8:00 AM — 7:00 PM PST</span>
+                    <span><i class="fas fa-map-marker-alt"></i> CALIT2, UC Irvine</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Join the UC Irvine AI in Science Institute (AISI) for an interdisciplinary event featuring experts in AI Foundations and Life Sciences. 
+                    This event marks a milestone for the Southern California research community.
+                </p>
+                <a href="https://ai-science.uci.edu/events/aisi-symposium/" target="_blank" class="event-btn">Register & View Agenda</a>
+            </div>
+        </div>
+    </div>
+    <!-- 
+    <div class="past-events-section fade-in-up">
+        <h3 style="margin-bottom: 2rem; font-size: 1.5rem; font-family: 'Outfit';">Past Events</h3>
+        
+        <div class="past-event-item">
+            <span class="past-date">Oct 24, 2024</span>
+            <span class="past-title">Regional AI Research Workshop - USC Campus</span>
+            <a href="#" class="past-link">View Materials <i class="fas fa-arrow-right" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+        </div>
+
+        <div class="past-event-item">
+            <span class="past-date">Aug 12, 2024</span>
+            <span class="past-title">Cyberinfrastructure Integration Virtual Seminar</span>
+            <a href="#" class="past-link">Watch Recording <i class="fas fa-play-circle" style="font-size: 0.8rem; margin-left: 5px;"></i></a>
+        </div>
+        
+        <div class="past-event-item">
+            <span class="past-date">June 05, 2024</span>
+            <span class="past-title">SoCal-AIRE Kickoff Meeting</span>
+            <span class="past-link" style="opacity: 0.5;">Archived</span>
+        </div>
+    </div>
+</section>-->
+
     <section class="partners-section">
-        <h2 class="section-title fade-in-up"> </h2>
+        <h2 class="section-title fade-in-up">Our Partners</h2>
         <div class="logo-grid">
             <div class="logo-card fade-in-up">
                 <img src="images/usc.png" alt="USC" class="partner-logo">
@@ -518,7 +1142,7 @@
             </a>
         </div>
         <div class="copyright">
-            © 2026 SoCal-AIRE. Convened by USC/ISI.
+            © 2024 SoCal-AIRE. Convened by USC/ISI.
         </div>
     </footer>
 
@@ -529,8 +1153,8 @@
             const iconMap = { 'dark': 'fa-moon', 'blue': 'fa-water', 'light': 'fa-sun' };
             const activeIcon = iconMap[themeName];
             const btns = document.getElementsByClassName('theme-btn');
-            for(let btn of btns) {
-                if(btn.innerHTML.includes(activeIcon)) {
+            for (let btn of btns) {
+                if (btn.innerHTML.includes(activeIcon)) {
                     btn.classList.add('active');
                 }
             }
@@ -545,4 +1169,5 @@
         document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
