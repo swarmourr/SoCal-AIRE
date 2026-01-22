@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="images/logo2.png" alt="SoCal-AIRE Logo" width="150" />
+  <img src="images/logofinal.png" alt="SoCal-AIRE Logo" width="150" />
 
   # SoCal-AIRE
   ### Southern California AI for Research & Education
