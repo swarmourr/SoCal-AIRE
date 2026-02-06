@@ -1412,38 +1412,31 @@
             <div id="upcoming-events-container" class="events-grid"></div>
         </div>
     </section>
+   
     <section id="media" class="fade-in-up">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
-        <div>
-            <h2 class="section-title" style="margin: 0; text-align: left; width: auto;">Latest Community Media</h2>
-            <p style="color: var(--text-secondary); margin-top: 5px;">Discover the latest research and workshops from <strong>@SoCal-AIRE</strong></p>
-        </div>
-        <a href="https://www.youtube.com/@SoCal-AIRE" target="_blank" class="event-btn" style="display: flex; align-items: center; gap: 10px; border-color: #FF0000; color: #FF0000; background: rgba(255,0,0,0.05);">
-            <i class="fab fa-youtube"></i> Subscribe on YouTube
-        </a>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <h2 class="section-title" style="margin: 0;">Event Archives</h2>
+        <select id="playlistExplorer" onchange="loadEventFolder(this.value)" style="padding: 10px; border-radius: 8px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--brand-cyan);">
+            <option value="NSF ACCESS Regional AI Workshop - SoCal Edition - 2026.json">Workshop 2026</option>
+        </select>
     </div>
-    
+
     <div class="video-container-main">
         <div class="video-player-wrapper">
             <div class="glass-video-frame">
-                <iframe id="mainYouTubePlayer" src="" title="SoCal-AIRE Video Player" frameborder="0" allowfullscreen></iframe>
+                <iframe id="mainYouTubePlayer" src="" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="video-info-card">
-                <span class="event-tag" id="videoTag">Latest Upload</span>
-                <h3 id="videoTitle">Loading...</h3>
-                <p id="videoDesc">Connecting to the @SoCal-AIRE YouTube channel...</p>
+                <h3 id="videoTitle">Select a Session</h3>
+                <p id="videoDesc">Choose a video from the list.</p>
             </div>
         </div>
-
         <div class="video-playlist">
-            <div class="playlist-scroll" id="youtube-playlist">
-                <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
-                    <i class="fas fa-spinner fa-spin"></i> Fetching latest videos...
-                </div>
-            </div>
+            <div class="playlist-scroll" id="youtube-playlist"></div>
         </div>
     </div>
 </section>
+
     <section class="partners-section">
         <h2 class="section-title fade-in-up">Our Partners</h2>
         <div class="logo-grid">
@@ -1609,74 +1602,69 @@
         });
         /**
 /**
- * SOCAL-AIRE AUTOMATIC YOUTUBE FEED (Bypass Cookie Error)
- * Fetches the 10 most recent videos from @SoCal-AIRE
+ * DYNAMIC FOLDER LOADER
  */
-async function fetchLatestVideos() {
-    // Correct Channel ID for @SoCal-AIRE
-    const channelId = "UCk6Fm6UvV8M2N-9mR-K9_Lw"; 
-    const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+async function loadEventFolder(fileName) {
+    if (!fileName) return;
     
-    // We use rss2json to convert the YouTube feed into data our site can read
-    const apiLink = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
+    const folderPath = 'event_videos/'; 
+    const container = document.getElementById('youtube-playlist');
+    const player = document.getElementById('mainYouTubePlayer');
+    
     try {
-        const response = await fetch(apiLink);
-        const data = await response.json();
+        // Fetching the local JSON file
+        const response = await fetch(folderPath + fileName);
+        if (!response.ok) throw new Error("File not found");
+        
+        const videoData = await response.json();
 
-        if (data.status === 'ok' && data.items.length > 0) {
-            const videos = data.items.slice(0, 10); 
-            renderAutoPlaylist(videos);
-        } else {
-            throw new Error("No videos found");
-        }
+        // Load first video
+        const first = videoData[0];
+        const firstId = first["Video url"].split('v=')[1];
+        player.src = `https://www.youtube-nocookie.com/embed/${firstId}?rel=0`;
+        document.getElementById('videoTitle').innerText = first.Title;
+        document.getElementById('videoDesc').innerText = first.Description || "";
+
+        // Build list
+        container.innerHTML = videoData.map((video, index) => {
+            const vidId = video["Video url"].split('v=')[1];
+            return `
+                <div class="playlist-item ${index === 0 ? 'active' : ''}" 
+                     onclick="switchVideo('${vidId}', \`${video.Title.replace(/'/g, "\\'")}\`, \`${video.Description.replace(/'/g, "\\'").replace(/\n/g, "<br>")}\`, this)">
+                    <img src="${video["Thumbnail url"]}" alt="Thumbnail">
+                    <div class="item-meta">
+                        <h4>${video.Title}</h4>
+                        <span>${video["Duration in timestamp"]}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
     } catch (error) {
-        console.error("YouTube Fetch Error:", error);
-        document.getElementById('videoTitle').innerText = "Visit Our Channel";
-        document.getElementById('videoDesc').innerText = "We couldn't load the feed. Please click below to view our latest videos directly on YouTube.";
-        document.getElementById('youtube-playlist').innerHTML = `
-            <div style="text-align:center; padding:20px;">
-                <a href="https://www.youtube.com/@SoCal-AIRE" target="_blank" class="event-btn">Open YouTube</a>
-            </div>`;
+        console.error("Load Error:", error);
+        container.innerHTML = `<p style="color:orange; padding:20px;">Browser blocked local file access. <br> Please use <b>Live Server</b> in VS Code.</p>`;
     }
 }
 
-function renderAutoPlaylist(videos) {
-    const container = document.getElementById('youtube-playlist');
-    
-    // Use youtube-nocookie.com to fix the "__Secure-YEC" error
-    const firstVid = videos[0];
-    const firstId = firstVid.link.split('v=')[1];
-    document.getElementById('mainYouTubePlayer').src = `https://www.youtube-nocookie.com/embed/${firstId}`;
-    document.getElementById('videoTitle').innerText = firstVid.title;
-    document.getElementById('videoDesc').innerText = "Latest update from @SoCal-AIRE.";
-
-    container.innerHTML = videos.map((video, index) => {
-        const vidId = video.link.split('v=')[1];
-        return `
-            <div class="playlist-item ${index === 0 ? 'active' : ''}" 
-                 onclick="updatePlayer('${vidId}', '${video.title.replace(/'/g, "\\'")}', this)">
-                <div class="play-overlay"><i class="fas fa-play"></i></div>
-                <img src="${video.thumbnail}" alt="Thumbnail">
-                <div class="item-meta">
-                    <h4 style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${video.title}</h4>
-                    <span>${new Date(video.pubDate).toLocaleDateString()}</span>
-                </div>
-            </div>
-        `;
-    }).join('');
-}
-
-function updatePlayer(id, title, element) {
-    // Enhanced security embed URL
+function switchVideo(id, title, desc, element) {
     document.getElementById('mainYouTubePlayer').src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
     document.getElementById('videoTitle').innerText = title;
-    
+    document.getElementById('videoDesc').innerHTML = desc;
     document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
     element.classList.add('active');
 }
- 
- </script>
+
+// SAFE INITIALIZATION
+window.addEventListener('DOMContentLoaded', () => {
+    const selector = document.getElementById('playlistExplorer');
+    // This 'if' prevents the "property 'value' is null" error
+    if (selector) {
+        loadEventFolder(selector.value);
+    } else {
+        console.warn("Could not find playlistExplorer dropdown in HTML.");
+    }
+});
+</script>
 </body>
 
 </html>
